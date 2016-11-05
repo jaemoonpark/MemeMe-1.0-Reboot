@@ -27,30 +27,63 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="my4-eA-Wju">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="EbD-ft-llW"/>
+                                    <navigationItem id="EbD-ft-llW">
+                                        <barButtonItem key="leftBarButtonItem" title="Share" id="bnG-iy-E6i"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="Rc0-Fm-VCV"/>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gqI-Q3-moz">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem title="Item" id="5eS-r4-dC3"/>
+                                    <barButtonItem title="Camera" id="5eS-r4-dC3"/>
+                                    <barButtonItem title="Album" id="l6X-Mp-0bj"/>
                                 </items>
                             </toolbar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PSI-UN-e72">
+                                <rect key="frame" x="0.0" y="44" width="375" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dO6-MR-f82">
+                                <rect key="frame" x="0.0" y="593" width="375" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="my4-eA-Wju" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="0ya-bj-2XT"/>
                             <constraint firstAttribute="trailing" secondItem="my4-eA-Wju" secondAttribute="trailing" id="1Js-Ek-IN9"/>
+                            <constraint firstItem="dO6-MR-f82" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="IhJ-Ca-yVx"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mPt-le-VfU" secondAttribute="bottom" id="Lwc-hx-XuE"/>
+                            <constraint firstItem="PSI-UN-e72" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="MCG-7O-MeB"/>
                             <constraint firstItem="mPt-le-VfU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Mpv-Xo-SNb"/>
+                            <constraint firstItem="gqI-Q3-moz" firstAttribute="top" secondItem="dO6-MR-f82" secondAttribute="bottom" id="NWr-vi-vTE"/>
+                            <constraint firstItem="PSI-UN-e72" firstAttribute="top" secondItem="my4-eA-Wju" secondAttribute="bottom" id="PCS-HN-QXn"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gqI-Q3-moz" secondAttribute="bottom" id="Qag-1X-fhR"/>
+                            <constraint firstAttribute="trailing" secondItem="PSI-UN-e72" secondAttribute="trailing" id="Tgy-Bs-Hbt"/>
                             <constraint firstItem="gqI-Q3-moz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ZgB-MD-eW8"/>
                             <constraint firstItem="my4-eA-Wju" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Zms-NG-dOx"/>
                             <constraint firstAttribute="trailing" secondItem="mPt-le-VfU" secondAttribute="trailing" id="aeQ-Fk-C8l"/>
+                            <constraint firstAttribute="trailing" secondItem="dO6-MR-f82" secondAttribute="trailing" id="cVk-Wq-l52"/>
                             <constraint firstAttribute="trailing" secondItem="gqI-Q3-moz" secondAttribute="trailing" id="fVt-Ye-2Ep"/>
                             <constraint firstItem="mPt-le-VfU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="hco-hj-cYt"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="barNavigation" destination="my4-eA-Wju" id="E0F-lx-a7U"/>
+                        <outlet property="barTool" destination="gqI-Q3-moz" id="TX3-R7-MDB"/>
+                        <outlet property="btmAlbum" destination="l6X-Mp-0bj" id="YyF-t5-6Sv"/>
+                        <outlet property="btmCamera" destination="5eS-r4-dC3" id="Gd1-3Z-SDN"/>
+                        <outlet property="btmCancel" destination="Rc0-Fm-VCV" id="zqY-oD-9zv"/>
+                        <outlet property="btmShare" destination="bnG-iy-E6i" id="27t-wT-moG"/>
+                        <outlet property="txtFieldBtm" destination="dO6-MR-f82" id="7Fh-0s-F9w"/>
+                        <outlet property="txtFieldTop" destination="PSI-UN-e72" id="9ed-d3-BPa"/>
+                        <outlet property="viewImage" destination="mPt-le-VfU" id="5I5-Cg-cs9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
