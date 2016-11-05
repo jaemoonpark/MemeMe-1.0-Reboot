@@ -24,6 +24,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         btmCamera.isEnabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)
         let txtFieldAttributes = [NSStrokeColorAttributeName: UIColor.black,
                                   NSStrokeWidthAttributeName: 5.0,
@@ -41,6 +42,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         txtFieldBtm.delegate = self
         
         self.subscribeToKeyboardNotification()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -77,6 +83,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func subscribeToKeyboardNotification(){
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func unsubscribeToKeyboardNotification(){
+    NotificationCenter.default.removeObserver(NSNotification.Name.UIKeyboardWillShow)
+    NotificationCenter.default.removeObserver(NSNotification.Name.UIKeyboardWillHide)
     }
     
     func getKeyBoardHeight(notification: NSNotification) -> CGFloat {
@@ -89,6 +101,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.view.frame.origin.y -= getKeyBoardHeight(notification: notification)
     }
     
+    func keyboardWillHide(notification: NSNotification){
+        self.view.frame.origin.y += getKeyBoardHeight(notification: notification)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
+    }
 
 
 
