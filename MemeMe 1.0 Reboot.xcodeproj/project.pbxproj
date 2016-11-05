@@ -192,6 +192,7 @@
 				TargetAttributes = {
 					A09B34701DCE70CB005307A9 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = D7WG485B62;
 						ProvisioningStyle = Automatic;
 					};
 					A09B34841DCE70CB005307A9 = {
@@ -409,6 +410,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = D7WG485B62;
 				INFOPLIST_FILE = "MemeMe 1.0 Reboot/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jaemoonpark.MemeMe-1-0-Reboot";
@@ -421,6 +423,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = D7WG485B62;
 				INFOPLIST_FILE = "MemeMe 1.0 Reboot/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jaemoonpark.MemeMe-1-0-Reboot";
@@ -502,6 +505,7 @@
 				A09B349B1DCE70CB005307A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A09B349C1DCE70CB005307A9 /* Build configuration list for PBXNativeTarget "MemeMe 1.0 RebootTests" */ = {
 			isa = XCConfigurationList;
@@ -510,6 +514,7 @@
 				A09B349E1DCE70CB005307A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A09B349F1DCE70CB005307A9 /* Build configuration list for PBXNativeTarget "MemeMe 1.0 RebootUITests" */ = {
 			isa = XCConfigurationList;
@@ -518,6 +523,7 @@
 				A09B34A11DCE70CB005307A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -22,12 +22,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        btmCamera.isEnabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)
+    }
 
 
     @IBAction func pickImage(selector: AnyObject){
         let controllerImagePick = UIImagePickerController()
         controllerImagePick.delegate = self
+        controllerImagePick.sourceType = UIImagePickerControllerSourceType.savedPhotosAlbum
         present(controllerImagePick, animated: true, completion: nil)
+    }
+    
+    @IBAction func pickCamera(selector: AnyObject){
+        let controllerCameraCapture = UIImagePickerController()
+        controllerCameraCapture.delegate = self
+        controllerCameraCapture.sourceType = UIImagePickerControllerSourceType.camera
+        present(controllerCameraCapture, animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
