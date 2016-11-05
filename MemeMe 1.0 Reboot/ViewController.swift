@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var btmCamera: UIBarButtonItem!
     @IBOutlet weak var btmAlbum: UIBarButtonItem!
     @IBOutlet weak var btmShare: UIBarButtonItem!
@@ -22,9 +22,32 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        //clearing text if selected & default text
+        if(textField == txtFieldTop && txtFieldTop.text == "TOP"){
+            txtFieldTop.text = ""
+        }
+        if(textField == txtFieldBtm && txtFieldBtm.text == "BOTTOM"){
+            txtFieldBtm.text = ""
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         btmCamera.isEnabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)
+        let txtFieldAttributes = [NSStrokeColorAttributeName: UIColor.black,
+            NSStrokeWidthAttributeName: 5.0,
+            NSForegroundColorAttributeName: UIColor.white,
+            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!] as [String : Any]
+        
+        
+        txtFieldTop.defaultTextAttributes = txtFieldAttributes
+        txtFieldBtm.defaultTextAttributes = txtFieldAttributes
+        
+        txtFieldTop.textAlignment = NSTextAlignment.center
+        txtFieldBtm.textAlignment = NSTextAlignment.center
+        
+        txtFieldTop.delegate = self
+        txtFieldBtm.delegate = self
     }
 
 
