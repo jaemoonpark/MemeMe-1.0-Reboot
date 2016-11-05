@@ -22,22 +22,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        //clearing text if selected & default text
-        if(textField == txtFieldTop && txtFieldTop.text == "TOP"){
-            txtFieldTop.text = ""
-        }
-        if(textField == txtFieldBtm && txtFieldBtm.text == "BOTTOM"){
-            txtFieldBtm.text = ""
-        }
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         btmCamera.isEnabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)
         let txtFieldAttributes = [NSStrokeColorAttributeName: UIColor.black,
-            NSStrokeWidthAttributeName: 5.0,
-            NSForegroundColorAttributeName: UIColor.white,
-            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!] as [String : Any]
+                                  NSStrokeWidthAttributeName: 5.0,
+                                  NSForegroundColorAttributeName: UIColor.white,
+                                  NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!] as [String : Any]
         
         
         txtFieldTop.defaultTextAttributes = txtFieldAttributes
@@ -48,6 +39,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         txtFieldTop.delegate = self
         txtFieldBtm.delegate = self
+        
+        self.subscribeToKeyboardNotification()
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        //clearing text if selected & default text
+        if(textField == txtFieldTop && txtFieldTop.text == "TOP"){
+            txtFieldTop.text = ""
+        }
+        if(textField == txtFieldBtm && txtFieldBtm.text == "BOTTOM"){
+            txtFieldBtm.text = ""
+        }
     }
 
 
@@ -71,6 +74,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         dismiss(animated: true, completion: nil)
     }
+    
+    func subscribeToKeyboardNotification(){
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+    }
+    
+    func getKeyBoardHeight(notification: NSNotification) -> CGFloat {
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
+        return keyboardSize.cgRectValue.height
+    }
+    
+    func keyboardWillShow(notification: NSNotification){
+        self.view.frame.origin.y -= getKeyBoardHeight(notification: notification)
+    }
+    
+
 
 
 }
