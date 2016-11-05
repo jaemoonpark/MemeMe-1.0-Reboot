@@ -1,14 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MemeMe_1_0_Reboot" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +20,41 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mPt-le-VfU">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="my4-eA-Wju">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="EbD-ft-llW"/>
+                                </items>
+                            </navigationBar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gqI-Q3-moz">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem title="Item" id="5eS-r4-dC3"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="my4-eA-Wju" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="0ya-bj-2XT"/>
+                            <constraint firstAttribute="trailing" secondItem="my4-eA-Wju" secondAttribute="trailing" id="1Js-Ek-IN9"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mPt-le-VfU" secondAttribute="bottom" id="Lwc-hx-XuE"/>
+                            <constraint firstItem="mPt-le-VfU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Mpv-Xo-SNb"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gqI-Q3-moz" secondAttribute="bottom" id="Qag-1X-fhR"/>
+                            <constraint firstItem="gqI-Q3-moz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ZgB-MD-eW8"/>
+                            <constraint firstItem="my4-eA-Wju" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Zms-NG-dOx"/>
+                            <constraint firstAttribute="trailing" secondItem="mPt-le-VfU" secondAttribute="trailing" id="aeQ-Fk-C8l"/>
+                            <constraint firstAttribute="trailing" secondItem="gqI-Q3-moz" secondAttribute="trailing" id="fVt-Ye-2Ep"/>
+                            <constraint firstItem="mPt-le-VfU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="hco-hj-cYt"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="133.59999999999999" y="137.18140929535232"/>
         </scene>
     </scenes>
 </document>
