@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var btmCamera: UIBarButtonItem!
     @IBOutlet weak var btmAlbum: UIBarButtonItem!
     @IBOutlet weak var btmShare: UIBarButtonItem!
@@ -23,9 +23,18 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
+    @IBAction func pickImage(selector: AnyObject){
+        let controllerImagePick = UIImagePickerController()
+        controllerImagePick.delegate = self
+        present(controllerImagePick, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            viewImage.image = image
+        }
+        dismiss(animated: true, completion: nil)
     }
 
 

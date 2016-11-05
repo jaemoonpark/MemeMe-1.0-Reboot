@@ -37,7 +37,11 @@
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
                                     <barButtonItem title="Camera" id="5eS-r4-dC3"/>
-                                    <barButtonItem title="Album" id="l6X-Mp-0bj"/>
+                                    <barButtonItem title="Album" id="l6X-Mp-0bj">
+                                        <connections>
+                                            <action selector="pickImageWithSelector:" destination="BYZ-38-t0r" id="7C6-We-2Na"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PSI-UN-e72">
