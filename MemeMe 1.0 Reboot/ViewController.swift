@@ -41,10 +41,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         txtFieldTop.delegate = self
         txtFieldBtm.delegate = self
         
-        //to dismiss keyboard
+        //dismiss first responder when tapping on view controller
         let select = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissFirstResponders))
         self.view.addGestureRecognizer(select)
         self.subscribeToKeyboardNotification()
+        
+        //disable share/save button when no image is selected
+        btmShare.isEnabled = (viewImage.image != nil)
     }
     
     func dismissFirstResponders(){
@@ -86,6 +89,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             viewImage.image = image
         }
+        btmShare.isEnabled = (viewImage.image != nil)
         dismiss(animated: true, completion: nil)
     }
     
