@@ -93,12 +93,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func getKeyBoardHeight(notification: NSNotification) -> CGFloat {
         let userInfo = notification.userInfo
+        print(userInfo!)
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
         return keyboardSize.cgRectValue.height
     }
     
     func keyboardWillShow(notification: NSNotification){
-        self.view.frame.origin.y = (self.view.frame.origin.y == 0) ? self.view.frame.origin.y - getKeyBoardHeight(notification: notification) : self.view.frame.origin.y 
+        if(self.view.frame.origin.y == 0 && txtFieldBtm .isFirstResponder){
+            self.view.frame.origin.y -= getKeyBoardHeight(notification: notification)
+        }
     }
     
     func keyboardWillHide(){
