@@ -28,7 +28,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <items>
                                     <navigationItem id="EbD-ft-llW">
-                                        <barButtonItem key="leftBarButtonItem" title="Share" id="bnG-iy-E6i"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Share" id="bnG-iy-E6i">
+                                            <connections>
+                                                <action selector="saveAndShare" destination="BYZ-38-t0r" id="BPg-gc-HmI"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Cancel" id="Rc0-Fm-VCV"/>
                                     </navigationItem>
                                 </items>

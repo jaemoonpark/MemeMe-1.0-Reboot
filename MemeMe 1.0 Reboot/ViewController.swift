@@ -27,7 +27,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewWillAppear(animated)
         btmCamera.isEnabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)
         let txtFieldAttributes = [NSStrokeColorAttributeName: UIColor.black,
-                                  NSStrokeWidthAttributeName: 5.0,
+                                  NSStrokeWidthAttributeName: -5.0,
                                   NSForegroundColorAttributeName: UIColor.white,
                                   NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!] as [String : Any]
         
@@ -113,7 +113,29 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return false
     }
 
-
+    @IBAction func saveAndShare(){
+        let meme = Meme(strTop: txtFieldTop.text!, strBtm: txtFieldBtm.text!, imageOrig: viewImage.image!, imageFinal: generateMemedImage())
+        viewImage.image = meme.imageFinal
+    }
+    
+    func generateMemedImage() -> UIImage{
+        //hiding bars and resigning first responders for screen capture
+        barTool.isHidden = true
+        barNavigation.isHidden = true
+        txtFieldBtm.resignFirstResponder()
+        txtFieldTop.resignFirstResponder()
+        
+        UIGraphicsBeginImageContextWithOptions(self.view.frame.size, false, 0)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        //unhiding bars
+        barTool.isHidden = false
+        barNavigation.isHidden = false
+        return memedImage
+    }
+    
 
 }
 
