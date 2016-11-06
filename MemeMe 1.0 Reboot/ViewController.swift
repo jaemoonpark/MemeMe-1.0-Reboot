@@ -83,7 +83,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func subscribeToKeyboardNotification(){
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     func unsubscribeToKeyboardNotification(){
@@ -98,11 +98,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func keyboardWillShow(notification: NSNotification){
-        self.view.frame.origin.y -= getKeyBoardHeight(notification: notification)
+        self.view.frame.origin.y = (self.view.frame.origin.y == 0) ? self.view.frame.origin.y - getKeyBoardHeight(notification: notification) : self.view.frame.origin.y 
     }
     
-    func keyboardWillHide(notification: NSNotification){
-        self.view.frame.origin.y += getKeyBoardHeight(notification: notification)
+    func keyboardWillHide(){
+        self.view.frame.origin.y = 0
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
