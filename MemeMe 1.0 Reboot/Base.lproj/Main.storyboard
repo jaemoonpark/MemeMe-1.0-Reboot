@@ -28,7 +28,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <items>
                                     <navigationItem id="EbD-ft-llW">
-                                        <barButtonItem key="leftBarButtonItem" title="Share" id="bnG-iy-E6i">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="bnG-iy-E6i">
                                             <connections>
                                                 <action selector="saveAndShare" destination="BYZ-38-t0r" id="BPg-gc-HmI"/>
                                             </connections>
@@ -40,16 +40,19 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gqI-Q3-moz">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem title="Camera" id="5eS-r4-dC3">
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="JY7-hP-ebi"/>
+                                    <barButtonItem systemItem="camera" id="5eS-r4-dC3">
                                         <connections>
                                             <action selector="pickCameraWithSelector:" destination="BYZ-38-t0r" id="4Pu-t5-8KN"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="rN7-K9-qMV"/>
                                     <barButtonItem title="Album" id="l6X-Mp-0bj">
                                         <connections>
                                             <action selector="pickImageWithSelector:" destination="BYZ-38-t0r" id="7C6-We-2Na"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="wOJ-CI-KR6"/>
                                 </items>
                             </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PSI-UN-e72">
