@@ -41,7 +41,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         txtFieldTop.delegate = self
         txtFieldBtm.delegate = self
         
+        //to dismiss keyboard
+        let select = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissFirstResponders))
+        self.view.addGestureRecognizer(select)
         self.subscribeToKeyboardNotification()
+    }
+    
+    func dismissFirstResponders(){
+        txtFieldTop.resignFirstResponder()
+        txtFieldBtm.resignFirstResponder()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
