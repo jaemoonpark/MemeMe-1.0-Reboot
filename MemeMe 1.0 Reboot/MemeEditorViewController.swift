@@ -69,19 +69,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         }
     }
     
-    
-    @IBAction func pickImage(selector: AnyObject){
+    @IBAction func pick(selector: AnyObject){
         let controllerImagePick = UIImagePickerController()
         controllerImagePick.delegate = self
-        controllerImagePick.sourceType = UIImagePickerControllerSourceType.savedPhotosAlbum
+        controllerImagePick.sourceType = (selector as! NSObject == btmAlbum) ? UIImagePickerControllerSourceType.savedPhotosAlbum :
+            UIImagePickerControllerSourceType.camera
         present(controllerImagePick, animated: true, completion: nil)
-    }
-    
-    @IBAction func pickCamera(selector: AnyObject){
-        let controllerCameraCapture = UIImagePickerController()
-        controllerCameraCapture.delegate = self
-        controllerCameraCapture.sourceType = UIImagePickerControllerSourceType.camera
-        present(controllerCameraCapture, animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
