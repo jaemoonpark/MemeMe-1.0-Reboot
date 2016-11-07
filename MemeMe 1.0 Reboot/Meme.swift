@@ -14,10 +14,4 @@ struct Meme{
     var strBtm: String
     var imageOrig: UIImage
     var imageFinal: UIImage
-    init(strTop: String, strBtm: String, imageOrig: UIImage, imageFinal: UIImage){
-        self.strTop = strTop
-        self.strBtm = strBtm
-        self.imageOrig = imageOrig
-        self.imageFinal = imageFinal
-    }
 }
