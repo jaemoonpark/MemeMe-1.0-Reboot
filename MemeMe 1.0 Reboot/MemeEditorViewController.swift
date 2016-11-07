@@ -26,20 +26,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         btmCamera.isEnabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)
-        let txtFieldAttributes = [NSStrokeColorAttributeName: UIColor.black,
-                                  NSStrokeWidthAttributeName: -5.0,
-                                  NSForegroundColorAttributeName: UIColor.white,
-                                  NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!] as [String : Any]
         
-        
-        txtFieldTop.defaultTextAttributes = txtFieldAttributes
-        txtFieldBtm.defaultTextAttributes = txtFieldAttributes
-        
-        txtFieldTop.textAlignment = NSTextAlignment.center
-        txtFieldBtm.textAlignment = NSTextAlignment.center
-        
-        txtFieldTop.delegate = self
-        txtFieldBtm.delegate = self
+        prepareTextField(textField: txtFieldTop)
+        prepareTextField(textField: txtFieldBtm)
         
         //dismiss first responder when tapping on view controller
         let select = UITapGestureRecognizer(target: self, action: #selector(MemeEditorViewController.dismissFirstResponders))
@@ -48,6 +37,16 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         //disable share/save button when no image is selected
         btmShare.isEnabled = (viewImage.image != nil)
+    }
+    
+    func prepareTextField(textField: UITextField){
+        let txtFieldAttributes = [NSStrokeColorAttributeName: UIColor.black,
+                                  NSStrokeWidthAttributeName: -5.0,
+                                  NSForegroundColorAttributeName: UIColor.white,
+                                  NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!] as [String : Any]
+        textField.defaultTextAttributes = txtFieldAttributes
+        textField.textAlignment = NSTextAlignment.center
+        textField.delegate = self
     }
     
     func dismissFirstResponders(){
