@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var btmCamera: UIBarButtonItem!
     @IBOutlet weak var btmAlbum: UIBarButtonItem!
     @IBOutlet weak var btmShare: UIBarButtonItem!
@@ -42,7 +42,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         txtFieldBtm.delegate = self
         
         //dismiss first responder when tapping on view controller
-        let select = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissFirstResponders))
+        let select = UITapGestureRecognizer(target: self, action: #selector(MemeEditorViewController.dismissFirstResponders))
         self.view.addGestureRecognizer(select)
         self.subscribeToKeyboardNotification()
         
@@ -69,8 +69,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             txtFieldBtm.text = ""
         }
     }
-
-
+    
+    
     @IBAction func pickImage(selector: AnyObject){
         let controllerImagePick = UIImagePickerController()
         controllerImagePick.delegate = self
@@ -94,13 +94,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func subscribeToKeyboardNotification(){
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MemeEditorViewController.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MemeEditorViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     func unsubscribeToKeyboardNotification(){
-    NotificationCenter.default.removeObserver(NSNotification.Name.UIKeyboardWillShow)
-    NotificationCenter.default.removeObserver(NSNotification.Name.UIKeyboardWillHide)
+        NotificationCenter.default.removeObserver(NSNotification.Name.UIKeyboardWillShow)
+        NotificationCenter.default.removeObserver(NSNotification.Name.UIKeyboardWillHide)
     }
     
     func getKeyBoardHeight(notification: NSNotification) -> CGFloat {
@@ -124,7 +124,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         textField.resignFirstResponder()
         return false
     }
-
+    
     @IBAction func saveAndShare(){
         let meme = Meme(strTop: txtFieldTop.text!, strBtm: txtFieldBtm.text!, imageOrig: viewImage.image!, imageFinal: generateMemedImage())
         
@@ -151,6 +151,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return memedImage
     }
     
-
+    
 }
 
