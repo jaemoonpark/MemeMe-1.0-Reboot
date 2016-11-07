@@ -32,8 +32,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         //dismiss first responder when tapping on view controller
         let select = UITapGestureRecognizer(target: self, action: #selector(MemeEditorViewController.dismissFirstResponders))
-        self.view.addGestureRecognizer(select)
-        self.subscribeToKeyboardNotification()
+        view.addGestureRecognizer(select)
+        subscribeToKeyboardNotification()
         
         //disable share/save button when no image is selected
         btmShare.isEnabled = (viewImage.image != nil)
@@ -97,19 +97,18 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     func getKeyBoardHeight(notification: NSNotification) -> CGFloat {
         let userInfo = notification.userInfo
-        print(userInfo!)
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
         return keyboardSize.cgRectValue.height
     }
     
     func keyboardWillShow(notification: NSNotification){
-        if(self.view.frame.origin.y == 0 && txtFieldBtm .isFirstResponder){
-            self.view.frame.origin.y -= getKeyBoardHeight(notification: notification)
+        if(view.frame.origin.y == 0 && txtFieldBtm .isFirstResponder){
+            view.frame.origin.y =  getKeyBoardHeight(notification: notification) * -1
         }
     }
     
     func keyboardWillHide(){
-        self.view.frame.origin.y = 0
+        view.frame.origin.y = 0
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -121,7 +120,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let meme = Meme(strTop: txtFieldTop.text!, strBtm: txtFieldBtm.text!, imageOrig: viewImage.image!, imageFinal: generateMemedImage())
         
         let viewActivity = UIActivityViewController(activityItems: [meme.imageFinal], applicationActivities: nil)
-        self.present(viewActivity, animated: true, completion: nil)
+        present(viewActivity, animated: true, completion: nil)
         
     }
     
@@ -132,8 +131,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         txtFieldBtm.resignFirstResponder()
         txtFieldTop.resignFirstResponder()
         
-        UIGraphicsBeginImageContextWithOptions(self.view.frame.size, false, 0)
-        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        UIGraphicsBeginImageContextWithOptions(view.frame.size, false, 0)
+        view.drawHierarchy(in: view.frame, afterScreenUpdates: true)
         let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
