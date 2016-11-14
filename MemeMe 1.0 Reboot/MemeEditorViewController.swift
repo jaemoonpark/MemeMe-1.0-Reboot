@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeEditorViewController.swift
 //  MemeMe 1.0 Reboot
 //
 //  Created by Jaemoon Park on 11/5/16.
@@ -20,15 +20,14 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var barTool: UIToolbar!
     override func viewDidLoad() {
         super.viewDidLoad()
+        prepareTextField(textField: txtFieldTop)
+        prepareTextField(textField: txtFieldBtm)
         // Do any additional setup after loading the view, typically from a nib.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         btmCamera.isEnabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)
-        
-        prepareTextField(textField: txtFieldTop)
-        prepareTextField(textField: txtFieldBtm)
         
         //dismiss first responder when tapping on view controller
         let select = UITapGestureRecognizer(target: self, action: #selector(MemeEditorViewController.dismissFirstResponders))
@@ -56,16 +55,13 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        unsubscribeToKeyboardNotification()
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         //clearing text if selected & default text
-        if(textField == txtFieldTop && txtFieldTop.text == "TOP"){
-            txtFieldTop.text = ""
-        }
-        if(textField == txtFieldBtm && txtFieldBtm.text == "BOTTOM"){
-            txtFieldBtm.text = ""
+        if(textField.text == "TOP" || textField.text == "BOTTOM"){
+            textField.text = ""
         }
     }
     
@@ -121,10 +117,13 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         present(viewActivity, animated: true, completion: nil)
         viewActivity.completionWithItemsHandler = {(activity, completed, items, error) in
             if (completed) {
-                let meme = Meme(strTop: self.txtFieldTop.text!, strBtm: self.txtFieldBtm.text!, imageOrig: self.viewImage.image!, imageFinal: self.generateMemedImage())
-                
+                self.saveMeme()
             }
         }
+    }
+    
+    func saveMeme() -> Meme{
+        return Meme(strTop: self.txtFieldTop.text!, strBtm: self.txtFieldBtm.text!, imageOrig: self.viewImage.image!, imageFinal: self.generateMemedImage())
     }
     
     func generateMemedImage() -> UIImage{
@@ -145,6 +144,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         return memedImage
     }
     
+    override var prefersStatusBarHidden: Bool{
+        return true
+    }
     
 }
 

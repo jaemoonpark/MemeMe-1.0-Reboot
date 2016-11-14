@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 struct Meme{
-    var strTop: String
-    var strBtm: String
-    var imageOrig: UIImage
-    var imageFinal: UIImage
+    let strTop: String
+    let strBtm: String
+    let imageOrig: UIImage
+    let imageFinal: UIImage
 }
